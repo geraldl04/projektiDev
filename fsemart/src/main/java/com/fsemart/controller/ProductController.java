@@ -4,6 +4,7 @@ package com.fsemart.controller;
 import com.fsemart.entity.Product;
 import com.fsemart.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,8 @@ import java.util.List;
 @RequestMapping("/api/products")
 public class ProductController {
 
+
+    @Autowired
     private final ProductService productService;
 
     @GetMapping

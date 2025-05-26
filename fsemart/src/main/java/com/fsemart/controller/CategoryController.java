@@ -5,6 +5,7 @@ package com.fsemart.controller;
 import com.fsemart.entity.Category;
 import com.fsemart.service.CategoryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CategoryController {
 
+    @Autowired
     private final CategoryService categoryService;
 
     @GetMapping

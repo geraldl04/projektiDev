@@ -1,36 +1,16 @@
 package com.fsemart.service;
 
-
 import com.fsemart.entity.Product;
-import com.fsemart.repository.ProductRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
-@Service
-@RequiredArgsConstructor
+public interface ProductService {
 
-public class ProductService {
+         List<Product> findAll() ;
 
+       Product findProductById(Long id);
 
-    private final ProductRepository productRepository;
+       Product save(Product product) ;
 
-    public List<Product> findAll() {
-        return productRepository.findAll();
-    }
-
-    public Product findProductById(Long id) {
-        Optional<Product> product = productRepository.findById(id);
-        return product.orElse(null);
-    }
-
-    public Product save(Product product) {
-        return productRepository.save(product);
-    }
-
-    public void delete(Product product) {
-        productRepository.delete(product);
-    }
+        void delete(Product product) ;
 }

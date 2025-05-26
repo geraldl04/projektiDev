@@ -4,6 +4,7 @@ import com.fsemart.entity.Order;
 import com.fsemart.entity.OrderItem;
 import com.fsemart.service.OrderService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,8 @@ import java.util.Optional;
 @RequestMapping("/api/orders")
 @RequiredArgsConstructor
 public class OrderController {
+
+    @Autowired
     private final OrderService orderService;
 
     @PostMapping("/{userId}")
@@ -20,10 +23,6 @@ public class OrderController {
         return orderService.bejPorosi(userId, items);
     }
 
-    @GetMapping("/test")
-    public String test() {
-        return "Order controller is working!";
-    }
 
     @GetMapping("/user/{userId}")
     public Optional<Order> getUserOrders(@PathVariable Long userId) {

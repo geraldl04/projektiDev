@@ -3,6 +3,7 @@ package com.fsemart.controller;
 import com.fsemart.entity.User;
 import com.fsemart.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 public class UserController {
     //per momentin po e lej kshu cdo kush mund ti aksesosje
 
+    @Autowired
     private final UserService userService;
 
     @GetMapping
