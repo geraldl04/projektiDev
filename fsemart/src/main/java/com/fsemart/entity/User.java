@@ -1,6 +1,8 @@
 package com.fsemart.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,12 +24,19 @@ public class User {
    @GeneratedValue(strategy = GenerationType.IDENTITY)//nga kolona identity eshte auto incremented
    private Long id ;
 
+
+   @NotBlank(message = " Duhet te vendosesh username")
    @Column(nullable = false , length = 255)
    private String username ;
 
+
+   @Email(message = "Email i pavlefshem")
+   @NotBlank(message = "Email-i nuk duhet te jete bosh")
    @Column(unique = true , nullable = false , length = 255)
    private String email ;
 
+
+   @NotBlank(message = "Password-i nuk duhet te jete bosh")
    @Column(nullable = false , length = 255)
    private String password ;
 

@@ -3,6 +3,7 @@ package com.fsemart.controller;
 import com.fsemart.entity.User;
 import com.fsemart.repository.UserRepository;
 import com.fsemart.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -37,7 +38,7 @@ public class UserController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
-    public User createUser(@RequestBody User user) {
+    public User createUser(@Valid  @RequestBody User user) {
         return userService.saveUser(user);
     }
     @PreAuthorize("hasRole('ADMIN')")
