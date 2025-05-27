@@ -45,6 +45,14 @@ Ndersa admini i shfaq  :
 ![img_1.png](img_1.png)
 
 
+### Te testojme 2 nga validimet 
+
+Kur tenton te fusesh nje user por pa username 
+![img_2.png](fsemart/src/main/resources/templates/img_2.png)
+
+Kur tenton te fusesh nje email qe tashme ekzsiton
+![img_3.png](fsemart/src/main/resources/templates/img_3.png)
+
 ## Shenim
 
 Komentet qe kam bere pergjate file-ve jane per mua, qe ti perseris e ti mbaj mend, jo per shpjegim kodi.
