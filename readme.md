@@ -32,6 +32,20 @@ Kam shtuar dhe nje tjeter me perpara.
 
 ---
 
+
+### Te testojme autentikim qe shtova dhe te jap outputet 
+
+Kam bere qe nje user i thjeshte me rol user te mos mund te shikoje gjith userat por admini po dhe e njejta logjike eshte
+ndjekur per te tjerat gjithashtu : 
+
+Tregon qe eshte forbidden 
+![img.png](img.png) 
+
+Ndersa admini i shfaq  : 
+![img_1.png](img_1.png)
+
+
 ## Shenim
 
 Komentet qe kam bere pergjate file-ve jane per mua, qe ti perseris e ti mbaj mend, jo per shpjegim kodi.
+
