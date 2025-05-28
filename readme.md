@@ -53,6 +53,78 @@ Kur tenton te fusesh nje user por pa username
 Kur tenton te fusesh nje email qe tashme ekzsiton
 ![img_3.png](fsemart/src/main/resources/templates/img_3.png)
 
+![img_4.png](fsemart/src/main/resources/templates/img_4.png)
+
+
+# Ndryshimet e bera sot
+
+Dokument me ndryshimet funksionale dhe teknike te bera sot ne projekt.
+
+---
+
+## Ndryshime te entiteti Produkt
+
+- Ne entitetin `Product` eshte shtuar nje reference ndaj `userSeller`.
+- Kur nje user ben kerkese `GET` per produktet, i shfaqen edhe detajet e shitesit.
+
+### Zgjidhja:
+Per te kufizuar dhe kontrolluar cfare i shfaqet user-it ne varesi te rolit, jane krijuar dy DTO:
+
+- `ProductUserDto`
+- `ProductAdminDto`
+
+---
+
+## Ilustrime
+SI admin : 
+![img_2.png](img_2.png)
+SI user : 
+![img_3.png](img_3.png)
+
+
+## Ndryshime te Kategoria
+
+- Produkti ben pjese ne nje kategori.
+- Ne momentin qe shfaqen produktet, shfaqen edhe detajet e kategorise .
+
+### Zgjidhja:
+Per kete arsye jane perdorur dy DTO:
+
+- `CategoryUserDto`
+- `CategoryAdminDto`
+
+---
+## Ilustrime
+
+Si user : 
+![img_4.png](img_4.png)
+
+Si admin : 
+![img_5.png](img_5.png)
+
+## Ndryshime te Porosia
+
+- Kur nje user ose admin shikon nje porosi, per shkak te nesting dalin te gjitha detajet e produktit, shitesit etj.
+
+### Zgjidhja:
+Per te kufizuar keto te dhena, jane perdorur DTO specifike per orderat .
+
+
+## Ndryshime te orderi
+Useri nuk duhet te lejohet te bej place order per nje id qe nuk eshte e vetmja , per demonstrim useri mund te beje porosi
+vetem per veten ndersa admini per te gjithe
+
+SI user qe tenton te shtoje te nje user me id tjeter : 
+![img_7.png](img_7.png)
+![img_8.png](img_8.png)
+
+Useri  qe shton te id-ja e vet : 
+![img_9.png](img_9.png)
+
+Admini qe mund te shtoje kudo : 
+![img_6.png](img_6.png)
+
+
 ## Shenim
 
 Komentet qe kam bere pergjate file-ve jane per mua, qe ti perseris e ti mbaj mend, jo per shpjegim kodi.

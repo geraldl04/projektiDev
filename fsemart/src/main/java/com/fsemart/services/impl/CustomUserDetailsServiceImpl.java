@@ -13,7 +13,8 @@ import java.util.Optional;
 
 @Service
 public class CustomUserDetailsServiceImpl implements UserDetailsService {
-
+//perdoret si klase gjate loginit , thirret nga vete spring merr te dhenat e nje useri nga databaza dhe nese gjendet ju ben wrap
+    //ne nje CustomUserDetails , dhe pastaj spring automatikisht , e ruan si authentication object , bazuar ne SecurityContext
     @Autowired
     private final UserRepository userRepository;
 
