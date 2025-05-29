@@ -15,4 +15,6 @@ public interface CategoryService {
 
     void deleteCategory(Long id);
 
+    List<Category> gjejKategoriMeMinimum2Produkte();
+
 }

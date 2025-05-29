@@ -14,6 +14,8 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
+
+
     @Autowired
     private final CategoryRepository categoryRepository;
 
@@ -38,5 +40,10 @@ public class CategoryServiceImpl implements CategoryService {
     public void deleteCategory(Long id) {
         Optional<Category> category = categoryRepository.findCategoryById(id);
         category.ifPresent(categoryRepository::delete);
+    }
+
+    @Override
+    public List<Category> gjejKategoriMeMinimum2Produkte() {
+        return categoryRepository.findCategoriesWithAtLeastTwoProducts();
     }
 }

@@ -1,5 +1,6 @@
 package com.fsemart.service;
 
+import com.fsemart.entity.UpdateProfileDto;
 import com.fsemart.entity.User;
 
 import java.util.List;
@@ -14,4 +15,14 @@ public interface UserService {
      User saveUser(User user);
 
      void deleteUser(Long id);
+
+     User getMyProfile() ;
+
+     User updateUser(UpdateProfileDto dto ) ;
+
+    User updateUserByAdmin(Long id , UpdateProfileDto dto ) ;
+
+    User changeUserRoleToAdmin(Long id) ;
+
+
 }

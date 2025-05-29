@@ -61,6 +61,8 @@ public class CategoryController {
         categoryService.deleteCategory(id);
     }
 
+
+
       private Object ktheKategoriNeDto(Category category , boolean isAdmin){
         if(!isAdmin){
 
@@ -104,5 +106,17 @@ public class CategoryController {
         }
       }
 
+    @GetMapping("/min")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    public List<Object> gjejKategoriMeProdukte() {
+        var auth = SecurityContextHolder.getContext().getAuthentication();
+        boolean isAdmin = auth.getAuthorities().stream().anyMatch
+                (a -> a.getAuthority().equals("ROLE_ADMIN"));
+
+
+       List<Category> kategorite =  categoryService.gjejKategoriMeMinimum2Produkte();
+
+       return kategorite.stream().map(p -> ktheKategoriNeDto(p , isAdmin)).toList() ;
+    }
 
 }

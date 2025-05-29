@@ -42,4 +42,25 @@ public class ProductServiceImpl implements ProductService {
         productRepository.delete(product);
     }
 
+
+    //me kthen produktet ne base te emrit te produktit
+    @Override
+    public List<Product> gjejProdukte(String emri) {
+        return productRepository.findByTitleContainingIgnoreCase(emri);
+    }
+
+    @Override
+    public List<Product> gjejProdukteShtuarSeFundmi() {
+        return productRepository.findTop3ByOrderByCreatedAtDesc();
+    }
+
+    @Override
+    public long gjejNrEProdukteveNeBazeTeKategorise(Long id){
+        return productRepository.countByCategoryId(id);
+    }
+
+
+
+
+
 }

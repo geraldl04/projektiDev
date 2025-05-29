@@ -24,6 +24,7 @@ public class ProductController {
 
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping
+    //mund te perdor metoden ktheNeDto por ngaqe e kam krijuar me vone si metode po e le te tille
     //kthen nje liste produktesh por
     //perdoret ? wildcard per te treguar se tipi i kthyaer mund te jete ose productAdminDto ose userDto
     //ne menyre qe useri te mos shikoje kush eshte seller
@@ -142,5 +143,39 @@ public class ProductController {
                     p.getCategory() != null ? p.getCategory().getId() : null
             );
         }
+    }
+
+    //tani qe do marr kete listen e produkteve , ne baze te emrit to perdor perseri kete funskionin kthe ne dto
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    @GetMapping("/search")
+    public Object searchProductByTitle(@RequestParam String title) {
+        //perseritje kodesh
+
+        var auth = SecurityContextHolder.getContext().getAuthentication();
+        boolean isAdmin = auth.getAuthorities().stream()
+                .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
+
+        List<Product> produktet = productService.gjejProdukte(title) ;
+
+        return produktet.stream().map(product -> ktheNeDto(product, isAdmin)).toList();
+
+
+    }
+
+    @GetMapping("/new")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    public List<Object> getProduktetEReja() {
+        var auth = SecurityContextHolder.getContext().getAuthentication();
+        boolean isAdmin = auth.getAuthorities().stream()
+                .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
+
+        List<Product> produktet = productService.gjejProdukteShtuarSeFundmi();
+        return produktet.stream().map(product -> ktheNeDto(product, isAdmin)).toList();
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/count/{id}")
+    public long  gjejNrEProdukteveNeBazeTeKategorise(@PathVariable Long id) {
+        return productService.gjejNrEProdukteveNeBazeTeKategorise(id) ;
     }
 }

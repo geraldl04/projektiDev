@@ -37,27 +37,35 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(auth -> auth
 
-                        //per userin
-                        .requestMatchers("/api/users/**").hasRole("ADMIN")
-                        .requestMatchers("/api/users/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/api/categories/**").hasAnyRole("USER", "ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/api/categories").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.DELETE, "/api/categories/**").hasRole("ADMIN")
+                        //per userin po e lej kshu e me pas e specifikoj ne controller duke perdorur preauthorize
+//                        .requestMatchers("/api/users/**").hasAnyRole("USER", "ADMIN")
+//
+//                        .requestMatchers(HttpMethod.GET, "/api/categories/**").hasAnyRole("USER", "ADMIN")
+//                        .requestMatchers(HttpMethod.POST, "/api/categories").hasRole("ADMIN")
+//                        .requestMatchers(HttpMethod.DELETE, "/api/categories/**").hasRole("ADMIN")
+//
+//                        .requestMatchers(HttpMethod.POST, "/api/orders/*").hasAnyRole("USER", "ADMIN")
+//                        .requestMatchers(HttpMethod.GET, "/api/orders/user/*").hasRole("ADMIN")
+//                        .requestMatchers(HttpMethod.GET, "/api/orders").hasRole("ADMIN")
+//                        .requestMatchers(HttpMethod.GET, "/api/products").hasAnyRole("USER", "ADMIN")
+//
+//
+//                        .requestMatchers(HttpMethod.GET, "/api/products/*").hasAnyRole("USER", "ADMIN")
+//
+//                        .requestMatchers(HttpMethod.GET, "/api/user/profile/*").hasAnyRole("USER", "ADMIN")
+//
+//
+//                        .requestMatchers(HttpMethod.POST, "/api/products/*").hasRole("ADMIN")
+//
+//
+//                        .requestMatchers(HttpMethod.POST, "/api/products").hasRole("ADMIN")
 
-                        .requestMatchers(HttpMethod.POST, "/api/orders/*").hasAnyRole("USER", "ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/api/orders/user/*").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/api/orders").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/api/products").hasAnyRole("USER", "ADMIN")
+                        //duke perdorur kuptova se po ta bej keshtu  do mduhet qe useri te jet i autentikuar me pas
+                        //rolet i caktoj ne controllera nese duhet te jete user apo admin dhe e=keshtu e bej me te thjeshte
+                        //security filter chain
+                                .requestMatchers("/api/**").authenticated()
 
-
-                        .requestMatchers(HttpMethod.GET, "/api/products/*").hasAnyRole("USER", "ADMIN")
-
-                        .requestMatchers(HttpMethod.POST, "/api/products/*").hasRole("ADMIN")
-
-
-                        .requestMatchers(HttpMethod.POST, "/api/products").hasRole("ADMIN")
-
-                        .anyRequest().permitAll()
+                                .anyRequest().permitAll()
                 )
                 .httpBasic(withDefaults());
 
